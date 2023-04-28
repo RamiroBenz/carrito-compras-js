@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>::.. Muestra Carrito..::</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+<link rel="shortcut icon" href="img/Lola-logos/7.png">
+
+	<style type="text/css">
+
+
+/*   COLOR AZUL #022a6e;      rosa #f5b5c4      fucsia #e02854  
+*/		
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Rammetto+One");
+* {
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 100%;
+  line-height: 1.6;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: #e02854;
+  background-color: #fff;
+}
+
+.container {
+  width: 100%;
+  max-width: 992px;
+  margin: 0 auto;
+  padding: 0 1em;
+  background-color: #fff;
+}
+@media (min-width: 900px) {
+  .container {
+    padding: 0;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0 1em;
+  margin-left: 0;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+button {
+  transition: all 0.3s;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.display-title {
+  font-size: 1.8rem;
+  text-align: center;
+  letter-spacing: 1.3px;
+}
+@media (min-width: 600px) {
+  .display-title {
+    font-size: 3rem;
+  }
+}
+
+.page-title {
+  text-align: center;
+  font-weight: 700;
+}
+@media (min-width: 600px) {
+  .page-title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
+
+.text-light {
+  color: #efefef;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-column-gap: 1em;
+  grid-row-gap: 2em;
+}
+
+.header .arrow {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  margin: -200px auto 0;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #daed0e;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+.header .arrow:hover, .header .arrow:focus {
+  -webkit-animation: point-down 1s alternate infinite;
+          animation: point-down 1s alternate infinite;
+}
+.header .arrow svg {
+  margin-top: 15px;
+  fill: #333;
+}
+.header .header__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.header .header__cart .header__submenu .shopping-cart-container {
+  position: absolute;
+  top: 100px;
+  right: 0;
+  padding: 1em;
+  background-color: #fff;
+  z-index: 2;
+  transform: scale(0);
+  transform: translatey(-10px);
+  opacity: 0;
+  pointer-events: none;
+}
+.header .header__cart .header__submenu .shopping-cart-container.open {
+  -webkit-animation: fade-down 0.3s forwards;
+          animation: fade-down 0.3s forwards;
+  pointer-events: auto;
+}
+.header .header__cart .header__submenu .cart {
+  fill: #e02854;
+  display: inline-block;
+  float: left;
+  margin-right: 2px;
+  cursor: pointer;
+}
+.header .header__cart .header__cart-btn {
+  background-color: transparent;
+  border: 2px solid #e02854;
+  padding: 0.8em;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+.header .header__cart .header__cart-btn:hover, .header .header__cart .header__cart-btn:focus {
+  border: 3px solid pink;
+
+}
+.header .header__cart .header__submenu {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.header .header__cart .header__submenu .shopping-cart-container {
+  text-align: center;
+  min-width: 300px;
+}
+.header .header__cart .header__submenu .shopping-cart-container table {
+  width: 100%;
+  padding: 0.5em;
+  padding-bottom: 2em;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 2.5em;
+}
+.header .header__cart .header__submenu .shopping-cart-container table thead th {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f5b5c4;
+}
+.header .header__cart .header__submenu .shopping-cart-container table tbody {
+  padding-bottom: 4em;
+}
+.header .header__cart .header__submenu .shopping-cart-container table tbody td {
+  padding: 0.5em;
+}
+.header .header__cart .header__submenu .cart-image {
+  max-width: 120px;
+}
+.header .header__cart .header__submenu .remove {
+  text-align: center;
+  width: 120px;
+  height: 120px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: #f5b5c4;
+  color: #fff;
+  transition: background-color 0.3s ease-out;
+}
+.header .header__cart .header__submenu .remove:hover,
+.header .header__cart .header__submenu .remove:focus {
+  background-color: #4d0505;
+}
+.header .header__cart .header__submenu .cart-btn {
+  display: block;
+  margin-bottom: 10px;
+  padding: 0.3em;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  color: #f5b5c4;
+  border: 1px solid #f5b5c4;
+}
+.header .header__cart .header__submenu .cart-btn:hover, .header .header__cart .header__submenu .cart-btn:focus {
+  background-color: #f5b5c4;
+  color: #fff;
+}
+.header .header__submenu .total-container {
+  text-align: center;
+}
+.header .header__submenu .total-container .total {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+.header .header__title {
+  font-family: "Rammetto One", cursive;
+  font-size: 1rem;
+  color: #f5b5c4;
+}
+.header .header__subtitle {
+  font-size: .6rem;
+  display: block;
+  margin-top: -10px;
+  line-height: 0.9;
+  margin-left: 20px;
+}
+.header .header__main {
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right bottom, rgba(234, 51, 42, 0.7), rgba(170, 37, 30, 0.7)), url(https://images.unsplash.com/photo-1504670073073-6123e39e0754?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=5a5a75419e84813c91b906d3fc38a4b8);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+}
+
+/*
+// Menu*/
+#menuToggle{
+  display: block;
+  position: relative;
+  top: 5px;
+  left: 35px;
+  z-index: 1;  
+}
+#menuToggle li:hover{
+  color: white;
+}
+#menuToggle input{
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  width: 50px;
+  height: 32px;
+  top: -7px;
+  left: -8px;
+  opacity: 0;
+  z-index: 2
+}
+#menuToggle span{
+  display: block;
+  width: 28px;
+  height: 4px;
+  margin-bottom: 5px;
+  background: #e02854;  
+  position: relative;
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s ease-in-out, background 0.5s ease-in-out, opacity 0.55s ease;
+}
+#menuToggle span:first-child{
+  transform-origin: 0% 0%;
+}
+#menuToggle span:nth-last-child(2){
+  transform-origin: 0% 100%;
+}
+#menuToggle input:checked ~ span{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, 1px);
+  background: #fff;
+}
+#menuToggle input:checked ~ span:nth-last-child(3){
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2)
+}
+#menuToggle input:checked ~ span:nth-last-child(2){
+  transform: rotate(-45deg) translate(0, -1px);
+}
+#menu{
+  position: absolute;
+  color:#e02854;
+  width: 250px;
+  margin: -100px 0px 0px -80px;
+  padding: 120px 50px 50px 50px;
+  background: #e02854;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s ease-in-out;
+}
+#menu li a{
+  padding: 10px 0px;
+  font-size: 22px;
+  color: #fff;
+}
+#menuToggle input:checked ~ ul{
+  transform: none;
+}
+
+/* FIN DEL MENU HAMBURGUESA*/
+
+.mt-60{
+    margin-top:60px;
+}
+
+.section-block-grey {
+    padding: 90px 0px 90px 0px;
+    background-color: #f9f9f9;
+}
+
+.serv-section-2 {
+    position: relative;
+    border: 1px solid #eee;
+    background: #fff;
+    box-shadow: 0px 10px 30px 0px rgba(50, 50, 50, 0.16);
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 30px;
+}
+
+.serv-section-2:before {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    z-index: 0;
+    content: " ";
+    width: 120px;
+    height: 120px;
+    background: #f5f5f5;
+    border-bottom-left-radius: 136px;
+    transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+}
+
+.serv-section-2-icon {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    max-width: 100px;
+    z-index: 1;
+    text-align: center;
+}
+
+.serv-section-2-icon svg {
+    color: #5f27cd;
+    font-size: 48px;
+    line-height: 65px;
+    transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+}
+
+.serv-section-desc {
+    position: relative;
+}
+
+.serv-section-2 h4 {
+    color: #333;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.serv-section-2 h5 {
+    color: #333;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1;
+    margin-top: 5px;
+}
+
+.section-heading-line-left {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: #5f27cd;
+    border-radius: 25%;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.serv-section-2 p {
+    margin-top: 25px;
+    padding-right: 50px;
+}
+
+.serv-section-2:hover .serv-section-2-icon svg {
+    color: #000;
+}
+
+.serv-section-2 svg:hover:before {
+    background: #5f27cd;
+}
+
+/*
+#FIN DE SERVICIOS*/
+
+
+
+
+
+
+
+.page-content {
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.card {
+  line-height: 1;
+  transition: all 0.3s;
+}
+.card:hover, .card:active {
+  transform: scale(1.1);
+  border: 1px solid gainsboro;
+}
+
+.card__title,
+.card__price {
+  font-weight: bold;
+}
+
+.card__title {
+  font-size: 1.1rem;
+}
+
+.card__text {
+  display: inline-block;
+  padding: 0.5em;
+  font-weight: 400;
+  margin-bottom: 0;
+  margin-top: 0;
+  color: #e02854;
+  background-color: gainsboro;
+}
+
+.card__btn {
+  width: 100%;
+  text-align: center;
+  padding: 0.5em;
+  border-radius: 5px;
+  background-color: #e02854;
+  border: 1px solid #e02854;
+  color: #fff;
+}
+.card__btn:hover, .card__btn:focus, .card__btn:active {
+  transform: translatey(2px);
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.5);
+  background-color: pink;
+  border:  1px solid #e02854;
+  color: #e02854;
+}
+.card__btn:active {
+  border: 3px solid #9e1610 inset;
+}
+
+.talle{
+  color: #e02854;
+  font-weight: bold;
+
+}
+
+/*
+FORM CONTACT*/
+
+
+.contact_top .contact_header {
+
+    margin-top: 100px;
+    color: #f5b5c4;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 56px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: center;
+}
+.contact_top .contact_text {
+    margin: 40px 130px;
+    color: #f5b5c4;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+}
+.contact_top_sec .contact_form {
+    background: #F2F4FF;
+    border-radius: 8px;
+    margin: 80px auto;
+    width: 60%;
+    padding: 40px;
+
+}
+.contact_form .input-field {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    line-height: 44px;
+    margin-bottom: 40px;
+}
+.contact_form label {
+    position: absolute;
+    padding: 15px 20px;
+    margin-bottom: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: rgba(255 255 255 / 65%);
+    transition: 0.2s all;
+    cursor: text;
+}
+.contact_form input {
+    height: 72px;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 0.5rem 20px;
+    box-shadow: none;
+    color: #ffffff;
+    background-color: #e02854;
+    border-radius: 8px;
+
+}
+.contact_form textarea {
+    height: 250px;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 0.5rem 20px;
+    box-shadow: none;
+    color: #ffffff;
+    background-color: #e02854;
+    border-radius: 8px;
+    padding-top: 15px;
+}
+.contact_form input:focus, .contact_form input:valid, .contact_form textarea:focus, .contact_form textarea:valid {
+    border-color: #e02854;
+
+}
+.contact_form input:focus~label, .contact_form input:valid~label, .contact_form textarea:focus~label, .contact_form textarea:valid~label {
+    font-size: 14px;
+    top: -24px;
+    color: rgba(255 255 255 / 65%);
+
+}
+.contact_form .submit_btn {
+    width: 100%;
+    height: 56px;
+    color: #ffffff;
+    border-radius: 8px;
+    background-color: #e02854;
+    border-color: #e02854;
+}
+.contact_form .okay {
+    width: 50%;
+    height: 56px;
+    margin-bottom: 40px;
+    color: #ffffff;
+    border-radius: 8px;
+    background-color: #e02854;
+    border-color: #e02854;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+.modal-content {
+    background: linear-gradient(180deg, #181A20 0%, #1B1F2D 100%);
+}
+.thank-you-pop{
+  width:100%;
+  padding:20px;
+  text-align:center;
+}
+.thank-you-pop h1{
+    margin: 25px 0;
+    color:#F2F4FF;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+.thank-you-pop p{
+    margin-bottom: 25px;
+    color:#F2F4FF;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+@media (max-width: 991px) {
+    .contact_top .contact_text {
+        margin: 40px 80px;
+    }
+}
+@media (max-width: 768px) {
+    .contact_top .contact_header {
+        margin-top: 30px;
+        font-size: 35px;
+    }
+    .contact_top .contact_text {
+        margin: 40px 25px;
+        font-size: 16px;
+    }
+}
+@media (max-width: 576px) {
+  .contact_top_sec {
+    margin: 0px 20px;
+  }
+    .contact_top .contact_header {
+        font-size: 30px;
+    }
+    .contact_top .contact_text {
+        margin: 20px 0px;
+        font-size: 16px;
+    }
+    .contact_top_sec .contact_form {
+        border-radius: 0px;
+        margin: 0;
+        width: 100%;
+        padding: 16px;
+        margin-bottom: 50px;
+    }
+    .contact_form .okay {
+        width: 60%;
+        height: 40px;
+    }
+    .thank-you-pop h1 {
+        font-size: 20px;
+    }
+    .thank-you-pop p {
+        font-size: 16px;
+    }
+    .contact_form input {
+        height: 56px;
+    }
+    .contact_form label {
+        padding: 6px 20px;
+    }
+    .contact_form input:focus~label, .contact_form input:valid~label, .contact_form textarea:focus~label, .contact_form textarea:valid~label {
+        font-size: 12px;
+        top: -18px;
+    }
+}
+@media (max-width: 375px) {
+    .contact_top .contact_header {
+        font-size: 25px;
+    }
+}
+
+
+
+
+
+
+/*  footer */
+
+.footer {
+  text-decoration: none;
+  list-style: none;
+  margin-top: 4em;
+  padding-bottom: 2em;
+  padding-top: 2em;
+  border-top: 1px dashed #e02854;
+  font-weight: bold;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.footer__link-item,
+.footer__link-item {
+  color: #e02854;
+}
+.footer__link-item:hover, .footer__link-item:focus,
+.footer__link-item:hover,
+.footer__link-item:focus {
+  color: pink;
+}
+
+@-webkit-keyframes point-down {
+  100% {
+    transform: translatey(20px);
+  }
+}
+
+@keyframes point-down {
+  100% {
+    transform: translatey(20px);
+  }
+}
+@-webkit-keyframes fade-down {
+  80% {
+    opacity: 1;
+    visibility: visible;
+    transform: translatey(20px);
+    transform: scale(1.3);
+    -webkit-animation-timing-function: cubic-bezier(0, 1, 0.75, 0);
+            animation-timing-function: cubic-bezier(0, 1, 0.75, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translatey(0);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+}
+@keyframes fade-down {
+  80% {
+    opacity: 1;
+    visibility: visible;
+    transform: translatey(20px);
+    transform: scale(1.3);
+    -webkit-animation-timing-function: cubic-bezier(0, 1, 0.75, 0);
+            animation-timing-function: cubic-bezier(0, 1, 0.75, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translatey(0);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+}
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+
+<div align="center" style="background-color:#ccc; color:#000;">
+  <img src="https://d2r9epyceweg5n.cloudfront.net/stores/776/040/rte/ENVIO%20RAPIDO%20(ICONO%20GRANDE).png" style="width:5%; color: #000;"> <h5>Envios GRATIS DESDE 20.000 PESOS</h5>   
+
+</div>
+
+<header class="header">
+  <div class="container header__top">
+    <div class="header__logo">
+       <img src="img/Lola-logos/7.png" style="width:15%; border-radius:5px;"> 
+      <!-- <h3>LM Online Store</h3> -->
+      
+    </div>
+    <div class="header__cart">
+      <ul>
+        <li class="header__submenu" id="submenu">
+          <button class="header__cart-btn" id="toggle-cart-btn"><svg class="cart" width="24" height="24" viewBox="0 0 24 24">
+  			<path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z"></path>
+		</svg> </button>
+          <div id="shopping-cart" class="shopping-cart-container">
+            <table id="cart-content">
+              <thead>
+                <tr>
+                  <th>Imagen</th>
+                  <th>Nombre</th>
+                  <th>Precio</th>
+                  <!-- <th>Cantidad</th> -->
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <p class="total-container" id="total-price"></p>
+            <a href="#" id="checkout-btn" class="cart-btn">Checkout</a>
+            <a href="#" id="clear-cart" class="cart-btn">Borrar Carrito</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <nav role="navigation" style="display:block;">
+    <div id="menuToggle">
+      <input type="checkbox">
+      
+      <span></span>
+      <span></span>
+      <span></span>
+
+      
+      <ul id="menu">
+        <!-- <li><a href="#" style="color: #fff; padding-left: 10px;">Início</a></li> -->
+        <li><a href="#ofertas" style="color: #fff; padding-left: 10px;">Ofertas</a></li>
+        <li><a href="productos.html" style="color: #fff; padding-left: 10px;">Productos</a></li>
+        <li><a href="#contact" style="color: #fff; padding-left: 10px;">Contactenos</a></li>
+        <li><a href="#" style="color: #fff; padding-left: 10px;"></a></li>
+      </ul>
+    </div>
+  </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- 
+    banner -->
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="margin-top:10px; border-radius: 5px; width: 100%;">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/BannerLM/10.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/BannerLM/11.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/BannerLM/12.png" class="d-block w-100" alt="...">
+    </div>
+  </div>
+ <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Antes</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Despues</span>
+  </button>
+</div>
+<!-- Fin del
+banner -->
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ 
+ <div class="section-block-grey">
+    <div class="container">
+        <div class="row mt-60">
+            <div class="col-md-4 col-sm-12 col-12">
+                <div class="serv-section-2">
+                    <div class="serv-section-2-icon">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                    
+                        <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                      </svg> </div>
+                    <div class="serv-section-desc">
+                        <h4>Delivery</h4>
+                        <h5>En pocos dias lo tenes <br> en tu domicilio</h5> </div>
+                    <div class="section-heading-line-left"></div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-12">
+                <div class="serv-section-2 serv-section-2-act">
+                    <div class="serv-section-2-icon serv-section-2-icon-act"> <svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16">
+                        <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
+                        <path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                        </svg> </div>
+                    <div class="serv-section-desc">
+                        <h4>Seguridad</h4>
+                        <h5>Compra con seguridad, <br> te llega en poco tiempo</h5> </div>
+                    <div class="section-heading-line-left"></div>
+                   
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-12">
+                <div class="serv-section-2">
+                    <div class="serv-section-2-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
+                        <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
+                      </svg> </div>
+                    <div class="serv-section-desc">
+                        <h4>Compra con tarjeta</h4>
+                        <h5>Aceptamos todas las tarjetas.</h5> </div>
+                    <div class="section-heading-line-left"></div>
+                    
+                </div>
+            </div>
+      </div>
+    </div>
+  </div>
+
+<main class="container page-content" id="ofertas">
+  <h2 class="page-title" style="color:#e02854;">Nuestras Ofertas</h2>
+  <br>
+  <br>
+  <div class="grid" id="grid">
+    <div class="card">
+      <img src="https://assets.cybermonday.com.ar/uploads/offers/287623/635ab41e99a8f.jpg?w=500&h=375" class="card__image" alt="">
+<!-- 
+      ESTRELLAS DE ICONOS -->
+    <div class="rating" style="margin-top: 10px;">
+      <i class='bx bxs-star'></i>
+      <i class='bx bxs-star'></i>
+      <i class='bx bxs-star'></i>
+      <i class='bx bxs-star'></i>
+      <i class='bx bxs-star'></i>
+    </div>
+<!--       FIN DE ICONOS DE ESTRELLAS -->
+
+      <div class="card__info">
+        <h4 class="card__title">BOXER DAMA ESTAMPADO</h4>
+        <p class="talle">Talle</p>
+        <button id="talle" style="border-radius:50%; font-weight: bold;"> M </button>
+        <button id="talle" style="border-radius:50%; font-weight: bold;"> L</button>
+        <button id="talle" style="border-radius:50%; font-weight: bold;"> XL</button>
+        <br> 
+        <p class="card__text" style="color:#7d0505; font-weight: bold;">Lola Morena</p>
+        <p class="card__price">$2000</p>
+        <button class="card__btn add-to-cart" data-id="6">Agregar al Carrito</button>
+      </div>
+    </div>
+    <!--.card-->
+    <div class="card">
+      <img src="https://assets.cybermonday.com.ar/uploads/offers/287623/635ab41e99a8f.jpg?w=500&h=375" class="card__image" alt="">
+<!-- 
+      ESTRELLAS DE ICONOS -->
+     <div class="rating" style="margin-top: 10px;">
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+    </div>
+<!--       FIN DE ICONOS DE ESTRELLAS -->
+
+      <div class="card__info">
+        <h4 class="card__title">Soutien Alma Estampado</h4>
+        <p class="talle">Talle</p>
+        <button id="talle" style="border-radius:50%; font-weight: bold;"> 105</button>
+        <button id="talle" style="border-radius:50%; font-weight: bold;"> 115</button>
+        <button id="talle" style="border-radius:50%; font-weight: bold;"> 120</button>
+        <br> 
+        <p class="card__text" style="color:#7d0505; font-weight: bold;">Lola Morena</p>
+        <p class="card__price">$1000</p>
+        <button class="card__btn add-to-cart" data-id="7">Agregar al Carrito</button>
+      </div>
+    </div>
+    <!--.card-->
+    <div class="card">
+      <img src="https://assets.cybermonday.com.ar/uploads/offers/287623/635ab41e99a8f.jpg?w=500&h=375" class="card__image" alt="">
+<!-- 
+      ESTRELLAS DE ICONOS -->
+     <div class="rating" style="margin-top: 10px;">
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+    </div>
+<!--       FIN DE ICONOS DE ESTRELLAS -->
+
+      <div class="card__info">
+        <h4 class="card__title">Web Design for beginners</h4>
+        <p class="talle">Talle</p><button id="talle" style="border-radius:50%; font-weight: bold;"> L</button><button id="talle" style="border-radius:50%; font-weight: bold;"> XL</button>
+        <br> 
+        <p class="card__text" style="color:#7d0505; font-weight: bold;">Lola Morena</p>
+        <p class="card__price">$2000</p>
+        <button class="card__btn add-to-cart" data-id="6">Agregar al Carrito</button>
+      </div>
+    </div>
+    <!--.card-->
+    <div class="card">
+      <img src="https://assets.cybermonday.com.ar/uploads/offers/287623/635ab41e99a8f.jpg?w=500&h=375" class="card__image" alt="">
+<!-- 
+      ESTRELLAS DE ICONOS -->
+     <div class="rating" style="margin-top: 10px;">
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+    </div>
+<!--       FIN DE ICONOS DE ESTRELLAS -->
+
+      <div class="card__info">
+        <h4 class="card__title">Learn to cook Italian food</h4>
+        <p class="talle">Talle</p><button id="talle" style="border-radius:50%; font-weight: bold;"> L</button><button id="talle" style="border-radius:50%; font-weight: bold;"> XL</button>
+        <br> 
+        <p class="card__text" style="color:#7d0505; font-weight: bold;">Lola Morena</p>
+        <p class="card__price">$10000</p>
+        <button class="card__btn add-to-cart" data-id="7">Agregar al Carrito</button>
+      </div>
+    </div>
+    <!--.card-->
+    <div class="card">
+      <img src="https://assets.cybermonday.com.ar/uploads/offers/287623/635ab41e99a8f.jpg?w=500&h=375" class="card__image" alt="">
+<!-- 
+      ESTRELLAS DE ICONOS -->
+     <div class="rating" style="margin-top: 10px;">
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+    </div>
+<!--       FIN DE ICONOS DE ESTRELLAS -->
+
+      <div class="card__info">
+        <h4 class="card__title">Web Design for beginners</h4>
+        <p class="talle">Talle</p><button id="talle" style="border-radius:50%; font-weight: bold;"> L</button><button id="talle" style="border-radius:50%; font-weight: bold;"> XL</button>
+        <br> 
+        <p class="card__text" style="color:#7d0505; font-weight: bold;">Lola Morena</p>
+        <p class="card__price">$2000</p>
+        <button class="card__btn add-to-cart" data-id="6">Agregar al Carrito</button>
+      </div>
+    </div>
+    <!--.card-->
+    <div class="card">
+      <img src="https://assets.cybermonday.com.ar/uploads/offers/287623/635ab41e99a8f.jpg?w=500&h=375" class="card__image" alt="">
+<!-- 
+      ESTRELLAS DE ICONOS -->
+     <div class="rating" style="margin-top: 10px;">
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+    </div>
+<!--       FIN DE ICONOS DE ESTRELLAS -->
+
+      <div class="card__info">
+        <h4 class="card__title">Learn to cook Italian food</h4>
+        <p class="talle">Talle</p><button id="talle" style="border-radius:50%; font-weight: bold;"> L</button><button id="talle" style="border-radius:50%; font-weight: bold;"> XL</button>
+        <br> 
+        <p class="card__text" style="color:#7d0505; font-weight: bold;">Lola Morena</p>
+        <p class="card__price">$10000</p>
+        <button class="card__btn add-to-cart" data-id="7">Agregar al Carrito</button>
+      </div>
+    </div>
+    <!--.card-->
+    <div class="card">
+      <img src="https://assets.cybermonday.com.ar/uploads/offers/287623/635ab41e99a8f.jpg?w=500&h=375" class="card__image" alt="">
+<!-- 
+      ESTRELLAS DE ICONOS -->
+     <div class="rating" style="margin-top: 10px;">
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+    </div>
+<!--       FIN DE ICONOS DE ESTRELLAS -->
+
+      <div class="card__info">
+        <h4 class="card__title">Web Design for beginners</h4>
+        <p class="talle">Talle</p><button id="talle" style="border-radius:50%; font-weight: bold;"> L</button><button id="talle" style="border-radius:50%; font-weight: bold;"> XL</button>
+        <br> 
+        <p class="card__text" style="color:#7d0505; font-weight: bold;">Lola Morena</p>
+        <p class="card__price">$2000</p>
+        <button class="card__btn add-to-cart" data-id="6">Agregar al Carrito</button>
+      </div>
+    </div>
+    <!--.card-->
+    <div class="card">
+      <img src="https://assets.cybermonday.com.ar/uploads/offers/287623/635ab41e99a8f.jpg?w=500&h=375" class="card__image" alt="">
+<!-- 
+      ESTRELLAS DE ICONOS -->
+     <div class="rating" style="margin-top: 10px;">
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+    </div>
+<!--       FIN DE ICONOS DE ESTRELLAS -->
+
+      <div class="card__info">
+        <h4 class="card__title">Boxer Liso con elastico a la vista color Negro</h4>
+        <p class="talle">Talle</p><button id="talle" style="border-radius:50%; font-weight: bold;"> L</button><button id="talle" style="border-radius:50%; font-weight: bold;"> XL</button>
+        <br>  
+        <p class="card__text" style="color:#7d0505; font-weight: bold;">Lola Morena</p>
+        <p class="card__price">$10000</p>
+        <button class="card__btn add-to-cart" data-id="7">Agregar al Carrito</button>
+      </div>
+    </div>
+    <!--.card-->
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+  </div>
+
+</main>
+
+
+<!-- 
+    FORMULARIO DE CONTACTO  -->
+
+<section class="contact_top_sec" id="contact" style=" padding-top: 60px;">
+        <div class="contact_top" style="background-color: #e8e9eb; padding-bottom: 100px; padding-top:100px;">
+            <div class="container" style="background-color: #e8e9eb;">
+                <h1 class="contact_header" style="color:#eb497c; ">Contactenos</h1>
+                <p class="contact_text" style="color:#eb497c; ">¡Deje su comentario y a continuación se pondrán en contacto con ud!</p>
+            </div>
+            <div class="contact_form">
+              <div class="container">
+                <form>
+                    <div class="input-field">
+                        <input type="text" id="fname" required />
+                        <label for="fname">Nombre</label>
+                    </div>
+                    
+                    <div class="input-field">
+                        <input type="text" id="email" required />
+                        <label for="email">Correo Electronico</label>
+                    </div>
+                    
+                   
+                    <div class="input-field">
+                        <textarea rows="5" id="message" name="text" required></textarea>
+                        <label for="message">Mensaje...</label>
+                    </div>
+                    <button class="btn submit_btn" data-toggle="modal" href="#ignismyModal">Enviar</button>
+                    <div class="modal fade" id="ignismyModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="thank-you-pop">
+                                        <h1>¡Su mensaje ha sido enviado con exito!</h1>
+                                        <p>Gracias por contactarnos. Un representante de nuestro equipo se estará comunicando a la brevedad..</p>
+                                        <button type="button" class="btn okay" data-dismiss="modal"
+                                            aria-label=""><span>OKAY</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+        </div>
+    </section>
+
+<!-- 
+                        BANNER -->
+
+<div align="center" style="margin-top:80px; width: 100%; padding-bottom: 60px;">
+
+<img src="img/BannerLM/16.png" style=" border-radius: 5px;">
+
+</div>
+
+
+<!-- 
+                      FIN DEL BANNER -->
+
+
+
+
+<footer class="footer" style="background-color:#f1f2f3;">
+  <div class="container footer__container"  style="background-color:#f1f2f3;">
+    <div class="footer__links">
+    <ul class="footer__list">
+      <li class="footer__list-item"><a class="footer__link-item" href="#">¿Quienes Somos?</a></li>
+      <li class="footer__list-item"><a class="footer__link-item" href="#">Productos</a></li>
+      <li class="footer__list-item"><a class="footer__link-item" href="#">Contactenos</a></li>
+    </ul>
+  </div>
+  <div class="credits" style="background-color:#f1f2f3;">
+    <p class="credits__small-text">LM Online Store&copy;2023</p>
+  </div>  
+  </div>
+</footer>
+
+
+
+
+
+<script type="text/javascript">
+	
+
+
+
+(function() {
+  // VARIABLES   ------------------------------------------
+  const productsContainer = document.querySelector("#grid");
+  const cartContainer = document.querySelector("#shopping-cart");
+  const cartContent = document.querySelector("#cart-content");
+  const toggleCartBtn = document.querySelector("#toggle-cart-btn");
+  const clearCartBtn = document.querySelector("#clear-cart");
+  const checkoutBtn = document.querySelector("#checkout-btn");
+  const totalPriceContainer = document.querySelector("#total-price");
+// VARIABLES   ------------------------------------------
+
+  // FUNCIONES  ---------------------------------------
+
+  function toggleCart() {
+    // alternar la visibilidad del carrito de compras
+    cartContainer.classList.toggle("open");
+  }
+
+  function getLSContent() {
+    //obtener contenido del almacenamiento local.
+    // si no hay nada, crea una matriz vacía
+    const lsContent = JSON.parse(localStorage.getItem("products")) || [];
+    return lsContent;
+  }
+
+  function setLSContent(lsContent) {
+    // guardar contenido dentro del almacenamiento local
+    localStorage.setItem("products", JSON.stringify(lsContent));
+  }
+
+  function calculateTotal(prices) {
+   
+// calcular el precio total en el carrito
+    return prices.reduce(function(prev, next) {
+      return prev + next;
+    }, 0);
+  }
+
+  function getCartItemPrices() {
+    // extrae los números de precio de los artículos del carrito para calcular el total
+    const prices = [];
+    // recuperar el elemento td en el carrito donde se almacena el precio del producto
+    // por cada producto en el carrito
+    let nums = cartContent.querySelectorAll("tr td:nth-child(3)");
+
+   // iterar sobre cada nodo td y extraer el precio
+    // quitar el signo $ del texto, convertir la cadena en
+    // un número y empujar el número en la matriz de precios
+    if (nums.length > 0) {
+      for (let cell = 0; cell < nums.length; cell++) {
+        let num = nums[cell].innerText;
+        num = num.replace(/[^\d]/g, "");
+        num = parseFloat(num);
+        prices.push(num);
+      }
+      // devuelve la matriz de precios
+      return prices;
+    } else {
+      return;
+    }
+  }
+
+  function displayCartTotal() {
+   // mostrar el costo total en el carrito
+    const prices = getCartItemPrices();
+    let total = 0;
+    if (prices) {
+      total = calculateTotal(prices);
+      totalPriceContainer.innerHTML = `<span class="total">Total: $${total.toFixed(
+        2
+      )}</span>`;
+    } else {
+      totalPriceContainer.innerHTML = '<span class="total">Total: $0</span>';
+    }
+  }
+
+  function displayProducts() {
+    // mostrar todos los productos en el carrito
+
+    // obtener contenido del almacenamiento local
+    const lsContent = getLSContent();
+    let productMarkup = "";
+    
+	// si el almacenamiento local no está vacío, construye el
+    // marcado de artículos del carrito y los detalles apropiados
+    if (lsContent !== null) {
+      for (let product of lsContent) {
+        productMarkup += `
+          <tr>
+          <td><img class="cart-image" src="${product.image}" alt="${
+          product.name
+        }" width="120"></td>
+          <td>
+            ${product.name}
+          </td>
+          <td>${product.price}</td>
+          <td><a href="#" data-id="${product.id}" class="remove">X</a></td>
+          </tr>
+        `;
+      }
+    } else {
+      
+// si no hay contenido en el almacenamiento local, alertar al usuario
+      productMarkup = "Tu Carrito esta vacio.";
+    }
+    // agregar marcado a DOM
+    cartContent.querySelector("tbody").innerHTML = productMarkup;
+  }
+
+  function saveProduct(clickedBtn) {
+   // guardar el producto seleccionado en el almacenamiento local y mostrarlo en el carrito juntos
+
+    // variables
+    const productId = clickedBtn.getAttribute("data-id");
+    const card = clickedBtn.parentElement.parentElement;
+    const cardInfo = clickedBtn.parentElement;
+    const prodImage = card.querySelector("img").src;
+    const prodName = cardInfo.querySelector("h4").textContent;
+    const prodPrice = cardInfo.querySelector(".card__price").textContent;
+
+    let isProductInCart = false;
+
+    // obtener matriz de almacenamiento local
+    const lsContent = getLSContent();
+
+   // para evitar que el usuario agregue el mismo curso dos veces, verifique
+    // el producto aún no está en LS antes de agregarlo
+    lsContent.forEach(function(product) {
+      if (product.id === productId) {
+        alert("Este producto ya esta en tu carrito.");
+        isProductInCart = true;
+      }
+    });
+
+   // solo si el producto no está ya en el carrito,
+    // crea un objeto que representa la información del producto seleccionado
+    // y empujarlo a la matriz de almacenamiento local
+    if (!isProductInCart) {
+      lsContent.push({
+        id: productId,
+        image: prodImage,
+        name: prodName,
+        price: prodPrice
+      });
+
+      // agregar el producto al almacenamiento local
+      setLSContent(lsContent);
+      // actualizar la visualización de cursos en el carrito de compras
+      displayProducts();
+    }
+  }
+
+  function removeProduct(productId) {
+    // eliminar el producto del carrito (y del almacenamiento local)
+
+    // recupera la lista de productos de LS
+    const lsContent = getLSContent();
+
+   
+// obtener el índice del elemento del producto para eliminar
+    // dentro de la matriz de contenido de almacenamiento local
+    let productIndex;
+    lsContent.forEach(function(product, i) {
+      if (product.id === productId) {
+        productIndex = i;
+      }
+    });
+
+   // modificar los elementos en la matriz de almacenamiento local
+    // para eliminar el elemento del producto seleccionado
+
+    lsContent.splice(productIndex, 1);
+    // actualizar el contenido del almacenamiento local
+    setLSContent(lsContent);
+
+    displayProducts();
+  }
+
+  function clearCart() {
+   // borrar todos los productos del carrito (y del almacenamiento local)
+
+    // recupera la lista de productos de LS
+    const lsContent = getLSContent();
+    // matriz vacía en el almacenamiento local
+    lsContent.splice(0, lsContent.length);
+    // actualizar el almacenamiento local
+    setLSContent(lsContent);
+   // mostrar el contenido del carrito de nuevo
+    displayProducts();
+  }
+
+  function checkout() {
+    // pago: simplemente borre el carrito
+    // después de que el usuario confirme el proceso de pago
+    const cartProducts = cartContent.querySelector("tbody").innerHTML;
+    if (cartProducts !== "" && confirm("¿Estás seguro de que quieres pagar?")) {
+      clearCart();
+    } else {
+      return;
+    }
+  }
+
+ 
+// ENLACE DE EVENTOS Y FUNCIONES DE LLAMADA
+
+  // Carga de la página:
+  document.addEventListener("DOMContentLoaded", function(e) {
+   // mostrar la lista de productos en el carrito, si los hay, al cargar la página
+    displayProducts();
+   // mostrar el total del carrito
+    displayCartTotal();
+  });
+
+  // abrir y cerrar carrito de compras
+  // cuando se hace clic en el botón del carrito
+  toggleCartBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    toggleCart();
+  });
+
+  // Guardar producto en carrito y Almacenamiento Local
+  // cuando se hace clic en el botón Agregar al carrito
+  productsContainer.addEventListener("click", function(e) {
+    if (e.target.classList.contains("add-to-cart")) {
+      e.preventDefault();
+      const clickedBtn = e.target;
+      saveProduct(clickedBtn);
+    }
+  });
+
+  productsContainer.addEventListener("click", function(e) {
+    if (e.target.classList.contains("add-to-cart")) {
+      displayCartTotal();
+    }
+  });
+
+  // vincular removeProduct para hacer clic en el evento de la tabla cartContent
+  cartContent.querySelector("tbody").addEventListener("click", function(e) {
+    e.preventDefault();
+   
+// identificar el botón en el que se hizo clic
+    const clickedBtn = e.target;
+    // si es un boton de eliminar
+    if (e.target.classList.contains("remove")) {
+      // obtener el valor de la propiedad data-id, que contiene el
+      // id del producto seleccionado
+      const productId = clickedBtn.getAttribute("data-id");
+     // obtener el valor de la propiedad data-id, que contiene el
+      // id del producto seleccionado
+      removeProduct(productId);
+      // mostrar productos en el carrito nuevamente,
+      // ahora la lista debería mostrarse con 1 producto menos
+      // o vacío si no quedan productos en el carrito
+
+      // Ajustar el total
+      displayCartTotal();
+    }
+  });
+
+  // vincular el botón para vaciar el carrito tanto a la función que
+  // borra el carrito y a la función que ajusta el precio total
+  clearCartBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    clearCart();
+  });
+  clearCartBtn.addEventListener("click", displayCartTotal);
+
+  
+// vincular el botón que realiza el pago a la función que
+  // controla el pago y la función que ajusta el precio total
+  checkoutBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    checkout();
+  });
+  checkoutBtn.addEventListener("click", displayCartTotal);
+})();
+
+
+
+// FUNCIONES  ---------------------------------------
+
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
